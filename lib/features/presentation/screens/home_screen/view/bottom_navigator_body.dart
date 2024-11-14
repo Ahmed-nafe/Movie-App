@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/assets_app.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/assets_app.dart';
 
 class BottomNavigatorBody extends StatelessWidget {
   BottomNavigatorBody(

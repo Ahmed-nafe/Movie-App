@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie/features/presentation/tabs/search_tab/views/search_tab_body.dart';
+import 'package:movie/features/presentation/screens/search_screen/view/search_tab_body.dart';
 
 class SearchTab extends StatelessWidget {
   const SearchTab({super.key});

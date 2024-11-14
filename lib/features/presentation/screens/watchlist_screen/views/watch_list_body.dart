@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movie/features/presentation/tabs/watchlist_tab/views/watch_list_widget.dart';
+import 'package:movie/features/presentation/screens/watchlist_screen/views/watch_list_widget.dart';
 
 class WatchListBody extends StatelessWidget {
   const WatchListBody({super.key});

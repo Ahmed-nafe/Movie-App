@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/utils/app_colors.dart';
-import 'browse_category_section.dart';
+import 'browse_category_widget.dart';
 
 class BrowseBody extends StatelessWidget {
   const BrowseBody({super.key});

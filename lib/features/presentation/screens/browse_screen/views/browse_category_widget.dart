@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BrowseCategorySection extends StatelessWidget {
-
   const BrowseCategorySection({
     super.key,
   });
@@ -27,15 +26,14 @@ class BrowseCategorySection extends StatelessWidget {
               decoration: BoxDecoration(
                 image: const DecorationImage(
                   fit: BoxFit.fill,
-                  image: AssetImage(
-                      "assets/0e34a5e080e8c915030603ddcdb4eeba.png"),
+                  image:
+                      AssetImage("assets/0e34a5e080e8c915030603ddcdb4eeba.png"),
                 ),
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.red,
               ),
               child: Center(
                 child: Text(
-                  'Item $index',
+                  'Action',
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     color: Colors.white,
