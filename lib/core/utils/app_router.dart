@@ -16,7 +16,7 @@ abstract class AppRouter {
       GoRoute(
         path: homeView,
         builder: (BuildContext context, GoRouterState state) {
-          return Home();
+          return const Home();
         },
       ),
     ],
