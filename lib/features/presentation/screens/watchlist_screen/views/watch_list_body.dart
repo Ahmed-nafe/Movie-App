@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie/features/presentation/screens/watchlist_screen/views/watch_list_widget.dart';
 
 class WatchListBody extends StatelessWidget {
@@ -7,9 +6,9 @@ class WatchListBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           left: 16.0,
           top: 16,
         ),
@@ -18,13 +17,13 @@ class WatchListBody extends StatelessWidget {
           children: [
             Text(
               "Watchlist",
-              style: GoogleFonts.montserrat(
+              style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
-            const WatchListWidget(),
+            WatchListWidget(),
           ],
         ),
       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/utils/app_colors.dart';
 import 'more_like_list_view.dart';
 
@@ -19,11 +18,11 @@ class MoreLikeSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 19.0, top: 14, bottom: 7),
+          const Padding(
+            padding: EdgeInsets.only(left: 19.0, top: 14, bottom: 7),
             child: Text(
               "More Like This",
-              style: GoogleFonts.montserrat(
+              style: TextStyle(
                 fontSize: 19,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,

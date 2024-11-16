@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie/core/utils/app_colors.dart';
 
 import 'film_details.dart';
@@ -17,8 +16,7 @@ class FilmDetailsBody extends StatelessWidget {
           foregroundColor: Colors.white,
           title: Text(
             "Dora and the lost city of gold",
-            style:
-                GoogleFonts.openSans(fontSize: 20, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
         ),
         body: Column(

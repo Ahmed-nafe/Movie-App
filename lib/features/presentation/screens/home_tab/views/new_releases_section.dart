@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/utils/app_colors.dart';
 import 'new_releases_lit_view.dart';
 
@@ -15,21 +14,21 @@ class NewReleasesSection extends StatelessWidget {
       decoration: const BoxDecoration(
         color: AppColors.shadeGray,
       ),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 19.0, top: 14),
+            padding: EdgeInsets.only(left: 19.0, top: 14),
             child: Text(
               "New Releases",
-              style: GoogleFonts.montserrat(
+              style: TextStyle(
                 fontSize: 19,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
           ),
-          const NewReleasesListView(),
+          NewReleasesListView(),
         ],
       ),
     );

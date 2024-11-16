@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class FilmItem extends StatelessWidget {
   const FilmItem({
@@ -26,15 +25,15 @@ class FilmItem extends StatelessWidget {
         Container(
           padding: EdgeInsets.only(
             top: MediaQuery.sizeOf(context).height * 0.12,
-            left: MediaQuery.sizeOf(context).height * 0.004,
+            left: MediaQuery.sizeOf(context).height * 0.01,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(
+              const Text(
                 "Dora and the lost city of gold",
-                style: GoogleFonts.openSans(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,

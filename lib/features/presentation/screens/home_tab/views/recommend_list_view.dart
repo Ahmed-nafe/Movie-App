@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie/core/utils/app_router.dart';
 
 class RecommendListView extends StatelessWidget {
@@ -39,12 +38,12 @@ class RecommendListView extends StatelessWidget {
                         "assets/f8b938401308eabc48c30669869eeac8.png",
                         fit: BoxFit.fill,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 8.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Row(
+                            Row(
                               children: [
                                 Text(
                                   "7.5",
@@ -58,7 +57,7 @@ class RecommendListView extends StatelessWidget {
                             ),
                             Text(
                               "Deadpool 2",
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
                                 fontSize: 13,
                                 color: Colors.white,
                               ),

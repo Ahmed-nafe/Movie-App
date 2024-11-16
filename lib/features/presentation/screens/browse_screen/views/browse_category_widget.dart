@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class BrowseCategorySection extends StatelessWidget {
   const BrowseCategorySection({
@@ -31,10 +30,10 @@ class BrowseCategorySection extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Center(
+              child: const Center(
                 child: Text(
                   'Action',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                     fontSize: 14,
                     color: Colors.white,
                     fontWeight: FontWeight.w600,

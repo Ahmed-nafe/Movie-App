@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class FilmDescription extends StatelessWidget {
   const FilmDescription({
@@ -11,9 +10,9 @@ class FilmDescription extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           "Dora and the lost city of gold",
-          style: GoogleFonts.openSans(
+          style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
             fontSize: 18,
@@ -24,7 +23,7 @@ class FilmDescription extends StatelessWidget {
         ),
         Text(
           "2019  PG-13  2h 7m",
-          style: GoogleFonts.openSans(
+          style:TextStyle(
             color: Colors.white.withOpacity(0.5),
             fontWeight: FontWeight.w600,
             fontSize: 10,

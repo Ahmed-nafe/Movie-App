@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movie/features/presentation/screens/home_tab/views/recommend_list_view.dart';
 import '../../../../../core/utils/app_colors.dart';
 
@@ -24,7 +23,7 @@ class RecommendSection extends StatelessWidget {
               padding: const EdgeInsets.only(left: 19.0, top: 14, bottom: 7),
               child: Text(
                 "Recommended",
-                style: GoogleFonts.montserrat(
+                style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
