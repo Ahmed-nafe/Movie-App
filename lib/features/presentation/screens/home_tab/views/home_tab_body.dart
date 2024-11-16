@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie/features/presentation/screens/home_tab/views/recommend_section.dart';
+import 'package:movie/features/presentation/screens/home_tab/views/top_section_item.dart';
 import 'new_releases_section.dart';
 
 class HomeTabBody extends StatelessWidget {
@@ -7,31 +8,18 @@ class HomeTabBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Column(
         children: [
-          Stack(
-            children: [
-              Container(
-                height: MediaQuery.sizeOf(context).height * 0.28,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/Image.png'),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const Padding(
+          TopSectionItem(),
+          Padding(
             padding: EdgeInsets.only(
-              top: 90,
-              bottom: 30,
+              top: 20,
+              bottom: 16,
             ),
             child: NewReleasesSection(),
           ),
-          const RecommendSection(),
+          RecommendSection(),
         ],
       ),
     );
