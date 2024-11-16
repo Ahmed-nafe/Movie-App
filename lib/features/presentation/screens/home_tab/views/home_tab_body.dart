@@ -10,11 +10,19 @@ class HomeTabBody extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          Image.asset(
-            fit: BoxFit.fill,
-            "assets/Image.png",
-            width: double.infinity,
-            height: MediaQuery.sizeOf(context).height * 0.28,
+          Stack(
+            children: [
+              Container(
+                height: MediaQuery.sizeOf(context).height * 0.28,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/Image.png'),
+                  ),
+                ),
+              ),
+            ],
           ),
           const Padding(
             padding: EdgeInsets.only(
@@ -23,7 +31,7 @@ class HomeTabBody extends StatelessWidget {
             ),
             child: NewReleasesSection(),
           ),
-          const RecommendSection()
+          const RecommendSection(),
         ],
       ),
     );
