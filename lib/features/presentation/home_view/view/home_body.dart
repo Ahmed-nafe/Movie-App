@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movie/features/presentation/screens/home_screen/view/bottom_navigator_body.dart';
-import '../../browse_screen/views/browse_tab.dart';
-import '../../home_tab/views/home_tab.dart';
-import '../../search_screen/view/search_tab.dart';
-import '../../watchlist_screen/views/watch_list_tab.dart';
+import '../../screens/browse_screen/views/browse_tab.dart';
+import '../../screens/home_tab/views/home_tab.dart';
+import '../../screens/search_screen/view/search_tab.dart';
+import '../../screens/watchlist_screen/views/watch_list_tab.dart';
+import 'bottom_navigator_body.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
