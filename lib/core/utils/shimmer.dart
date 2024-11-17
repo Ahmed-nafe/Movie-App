@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class BuildShimmer extends StatelessWidget {
-  const BuildShimmer({super.key});
+   BuildShimmer({super.key, required this.height, required this.width});
+
+  double height;
+  double width;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
-        separatorBuilder: (context, index) => const SizedBox(width: 8),
+        separatorBuilder: (context, index) => const SizedBox(width: 6),
         itemBuilder: (context, index) {
           return Shimmer.fromColors(
             baseColor: Colors.grey,
             highlightColor: Colors.grey,
             child: Container(
               margin: const EdgeInsets.only(left: 16),
-              width: 100,
-              height:60,
+              width: width,
+              height: height,
               color: Colors.white,
             ),
           );

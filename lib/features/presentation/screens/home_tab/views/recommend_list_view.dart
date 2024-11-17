@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:movie/core/utils/app_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie/features/presentation/screens/home_tab/data/model/RecommendedModel.dart';
+import 'package:movie/features/presentation/screens/home_tab/manger/recommended_cubit/recommended_cubit.dart';
+import 'package:movie/features/presentation/screens/home_tab/views/build_recommended_movie.dart';
 
 class RecommendListView extends StatelessWidget {
   const RecommendListView({
@@ -9,90 +11,36 @@ class RecommendListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 15,
-        itemBuilder: (context, index) {
-          return Stack(
-            children: [
-              InkWell(
-                onTap: () {
-                  GoRouter.of(context).push(AppRouter.detailsView);
-                },
-                child: Card(
-                  elevation: 5,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  color: const Color(0xff343534),
-                  margin: const EdgeInsets.only(
-                    right: 2.2,
-                    bottom: 10,
-                    left: 12,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        "assets/f8b938401308eabc48c30669869eeac8.png",
-                        fit: BoxFit.fill,
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "7.5",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                Icon(
-                                  Icons.star,
-                                  color: Colors.yellow,
-                                )
-                              ],
-                            ),
-                            Text(
-                              "Deadpool 2",
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 12,
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: 32,
-                    width: 24,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/Icons/bookmark.png"),
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 18,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+    return BlocBuilder<RecommendedCubit, RecommendedState>(
+      builder: (context, state) {
+        print("Ahmed Selim : $state");
+        if (state is RecommendedLoading) {
+          return const Expanded(
+            child: Center(child: CircularProgressIndicator()),
           );
-        },
-      ),
+        }
+        if (state is RecommendedSuccess) {
+          RecommendedModel recommendedModel = state.recommendedModel;
+
+          return Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: recommendedModel.results?.length,
+              itemBuilder: (context, index) {
+                final result = recommendedModel.results?[index];
+                return BuildRecommendedMovie(
+                  result: result,
+                );
+              },
+            ),
+          );
+        }
+        if (state is RecommendedError) {
+          return Text("Error : ${state.errorMessage}");
+        } else {
+          return const Text("OOPS!");
+        }
+      },
     );
   }
 }
