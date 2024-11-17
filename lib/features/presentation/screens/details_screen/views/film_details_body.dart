@@ -14,7 +14,7 @@ class FilmDetailsBody extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: AppColors.shadeGray,
           foregroundColor: Colors.white,
-          title: Text(
+          title: const Text(
             "Dora and the lost city of gold",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),

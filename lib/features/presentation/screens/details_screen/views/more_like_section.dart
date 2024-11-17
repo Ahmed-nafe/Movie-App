@@ -11,7 +11,7 @@ class MoreLikeSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.only(bottom: 25),
+      margin: EdgeInsets.only(bottom: MediaQuery.sizeOf(context).height * 0.01),
       decoration: const BoxDecoration(
         color: AppColors.shadeGray,
       ),
@@ -30,10 +30,9 @@ class MoreLikeSection extends StatelessWidget {
             ),
           ),
           SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.21,
-              child: const Expanded(
-                child: MoreLikeListView(),
-              ))
+            height: MediaQuery.sizeOf(context).height * 0.21,
+            child: const MoreLikeListView(),
+          )
         ],
       ),
     );

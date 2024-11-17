@@ -12,15 +12,17 @@ class RecommendSection extends StatelessWidget {
     return Expanded(
       child: Container(
         width: double.infinity,
-        margin: const EdgeInsets.only(bottom: 25),
+        margin: EdgeInsets.only(
+          bottom: MediaQuery.sizeOf(context).height * 0.01,
+        ),
         decoration: const BoxDecoration(
           color: AppColors.shadeGray,
         ),
-        child: Column(
+        child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 19.0, top: 14, bottom: 7),
+              padding: EdgeInsets.only(left: 19.0, top: 14, bottom: 7),
               child: Text(
                 "Recommended",
                 style: TextStyle(
@@ -30,7 +32,7 @@ class RecommendSection extends StatelessWidget {
                 ),
               ),
             ),
-            const RecommendListView(),
+            RecommendListView(),
           ],
         ),
       ),
