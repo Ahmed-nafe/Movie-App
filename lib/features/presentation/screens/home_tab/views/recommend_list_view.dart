@@ -13,7 +13,6 @@ class RecommendListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RecommendedCubit, RecommendedState>(
       builder: (context, state) {
-        print("Ahmed Selim : $state");
         if (state is RecommendedLoading) {
           return const Expanded(
             child: Center(child: CircularProgressIndicator()),

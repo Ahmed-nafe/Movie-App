@@ -26,7 +26,7 @@ class BuildItem extends StatelessWidget {
             top: MediaQuery.sizeOf(context).height * 0.15,
             left: MediaQuery.sizeOf(context).height * 0.014,
           ),
-          child: const FilmItem(),
+          // child: FilmItem(),
         ),
       ],
     );

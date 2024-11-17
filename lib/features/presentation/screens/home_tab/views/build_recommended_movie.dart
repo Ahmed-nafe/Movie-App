@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie/core/utils/shimmer_container.dart';
 import 'package:movie/features/presentation/screens/home_tab/data/model/RecommendedModel.dart';
-import 'package:shimmer/shimmer.dart';
 import '../../../../../core/utils/app_router.dart';
 
 class BuildRecommendedMovie extends StatelessWidget {
@@ -41,15 +41,8 @@ class BuildRecommendedMovie extends StatelessWidget {
                     imageUrl:
                         "https://image.tmdb.org/t/p/original/${result?.posterPath ?? ""}",
                     fit: BoxFit.cover,
-                    placeholder: (context, url) => Shimmer.fromColors(
-                      baseColor: Colors.grey,
-                      highlightColor: Colors.grey,
-                      child: Container(
-                        width: 100,
-                        height: 150,
-                        color: Colors.white,
-                      ),
-                    ),
+                    placeholder: (context, url) =>
+                        const ShimmerContainer(width: 100, height: 150),
                     errorWidget: (context, url, error) => const SizedBox(
                       height: 100,
                       width: 150,
@@ -60,7 +53,8 @@ class BuildRecommendedMovie extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 8.0, bottom: 8,right: 8),
+                  padding:
+                      const EdgeInsets.only(left: 8.0, bottom: 8, right: 8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

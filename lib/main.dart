@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/core/utils/server_locator.dart';
 import 'package:movie/features/presentation/screens/home_tab/data/repos/home_repo_impl.dart';
 import 'package:movie/features/presentation/screens/home_tab/manger/new_releses_cubit/new_releases_cubit.dart';
+import 'package:movie/features/presentation/screens/home_tab/manger/popular_cuibt/popular_cubit.dart';
 import 'package:movie/features/presentation/screens/home_tab/manger/recommended_cubit/recommended_cubit.dart';
 import 'core/utils/app_router.dart';
 
@@ -27,6 +28,11 @@ class MyApp extends StatelessWidget {
           create: (context) => RecommendedCubit(
             getIt.get<HomeRepoImplement>(),
           )..fetchRecommended(),
+        ),
+        BlocProvider(
+          create: (context) => PopularCubit(
+            getIt.get<HomeRepoImplement>(),
+          )..fetchPopularMovies(),
         ),
       ],
       child: MaterialApp.router(
