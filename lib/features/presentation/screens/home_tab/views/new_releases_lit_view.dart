@@ -27,7 +27,7 @@ class NewReleasesListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 final movieResult = newReleaseModel.results?[index];
                 return BuildNewReleasesMovie(
-                  bosterResult: movieResult,
+                  result: movieResult,
                 );
               },
             ),

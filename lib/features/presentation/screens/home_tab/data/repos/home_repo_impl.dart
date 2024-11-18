@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:movie/core/utils/api_manger.dart';
 import 'package:movie/core/utils/errors.dart';
+import 'package:movie/features/presentation/screens/details_screen/data/model/MoveDetilsModel.dart';
 import 'package:movie/features/presentation/screens/home_tab/data/model/PouplarModel.dart';
 import 'package:movie/features/presentation/screens/home_tab/data/model/RecommendedModel.dart';
 import '../model/NewReleaseModel.dart';
@@ -17,8 +18,7 @@ class HomeRepoImplement implements HomeRepo {
   @override
   Future<Either<Failure, NewReleaseModel>> fetchNewReleases() async {
     try {
-      var response = await apiManger.get(
-          endPoint: "upcoming?api_key=0403d62457b0709fa04b96044b5aa966");
+      var response = await apiManger.get(endPoint: "upcoming");
       NewReleaseModel newReleasesModel = NewReleaseModel.fromJson(response);
       return right(newReleasesModel);
     } on Exception catch (e) {
@@ -35,8 +35,7 @@ class HomeRepoImplement implements HomeRepo {
   @override
   Future<Either<Failure, RecommendedModel>> fetchRecommended() async {
     try {
-      var response = await apiManger.get(
-          endPoint: "top_rated?api_key=0403d62457b0709fa04b96044b5aa966");
+      var response = await apiManger.get(endPoint: "top_rated");
       RecommendedModel recommendedModel = RecommendedModel.fromJson(response);
       return right(recommendedModel);
     } on Exception catch (e) {
@@ -51,10 +50,9 @@ class HomeRepoImplement implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, PopularModel>> fetchPopular() async{
+  Future<Either<Failure, PopularModel>> fetchPopular() async {
     try {
-      var response = await apiManger.get(
-          endPoint: "top_rated?api_key=0403d62457b0709fa04b96044b5aa966");
+      var response = await apiManger.get(endPoint: "top_rated");
       PopularModel popularModel = PopularModel.fromJson(response);
       return right(popularModel);
     } on Exception catch (e) {

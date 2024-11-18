@@ -19,7 +19,7 @@ class BuildRecommendedMovie extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            GoRouter.of(context).push(AppRouter.detailsView);
+            GoRouter.of(context).push(AppRouter.detailsView, extra: result?.id);
           },
           child: Card(
             elevation: 5,

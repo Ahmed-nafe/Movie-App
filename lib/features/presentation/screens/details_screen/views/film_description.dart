@@ -1,18 +1,25 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie/features/presentation/screens/details_screen/data/model/MoveDetilsModel.dart';
+import '../../../../../core/utils/shimmer_container.dart';
+import 'build_Movie_description.dart';
 
 class FilmDescription extends StatelessWidget {
-  const FilmDescription({
+  FilmDescription({
     super.key,
+    required this.movieDetailsModel,
   });
+
+  MovieDetailsModel movieDetailsModel;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Dora and the lost city of gold",
-          style: TextStyle(
+        Text(
+          movieDetailsModel.title ?? "",
+          style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
             fontSize: 18,
@@ -22,8 +29,8 @@ class FilmDescription extends StatelessWidget {
           height: 6,
         ),
         Text(
-          "2019  PG-13  2h 7m",
-          style:TextStyle(
+          movieDetailsModel.releaseDate ?? "",
+          style: TextStyle(
             color: Colors.white.withOpacity(0.5),
             fontWeight: FontWeight.w600,
             fontSize: 10,
@@ -39,69 +46,20 @@ class FilmDescription extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width * 0.35,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                image: const DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage("assets/Image.png"),
+              ),
+              child: CachedNetworkImage(
+                imageUrl:
+                    "https://image.tmdb.org/t/p/original/${movieDetailsModel.posterPath}",
+                placeholder: (context, url) => const ShimmerContainer(
+                  width: double.infinity,
+                  height: 150,
                 ),
+                errorWidget: (context, url, error) =>
+                    const Center(child: Icon(Icons.error)),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 11.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.white.withOpacity(0.5),
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: const Text(
-                      "Action",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.sizeOf(context).width * 0.5,
-                    child: const Text(
-                      "Having spent most of her life exploring the jungle, nothing could prepare Dora for her most dangerous adventure yet — high school. ",
-                      maxLines: 5,
-                      overflow: TextOverflow.ellipsis,
-                      softWrap: true,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                      ),
-                      Text(
-                        "7.7",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
+            BuildMovieDescription(
+              movieDetailsModel: movieDetailsModel,
             )
           ],
         ),
