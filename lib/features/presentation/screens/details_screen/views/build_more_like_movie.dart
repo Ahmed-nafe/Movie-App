@@ -20,8 +20,10 @@ class BuildMoreLikeMovie extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            GoRouter.of(context)
-                .pushReplacement(AppRouter.detailsView, extra: result?.id);
+            GoRouter.of(context).pushReplacement(
+              AppRouter.detailsView,
+              extra: result?.id,
+            );
           },
           child: Card(
             elevation: 5,
@@ -59,25 +61,10 @@ class BuildMoreLikeMovie extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            "${result?.voteAverage ?? ""}".length > 4
-                                ? "${result?.voteAverage ?? ""}".substring(0, 4)
-                                : "${result?.voteAverage ?? ""}",
-                            softWrap: true,
-                            maxLines: 2,
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                          const Icon(
-                            Icons.star,
-                            color: Colors.yellow,
-                          )
-                        ],
-                      ),
+                      buildVoteModel(),
                       Text(
                         (result?.originalTitle ?? "").length > 20
-                            ? "${result?.originalTitle?.substring(0, 12)}..."
+                            ? "${result?.originalTitle?.substring(0, 10)}..."
                             : result?.originalTitle ?? "",
                         style: const TextStyle(
                           fontSize: 13,
@@ -94,6 +81,25 @@ class BuildMoreLikeMovie extends StatelessWidget {
         AddMovieToWatchList(
           left: 12,
         ),
+      ],
+    );
+  }
+
+  Row buildVoteModel() {
+    return Row(
+      children: [
+        Text(
+          "${result?.voteAverage ?? ""}".length > 4
+              ? "${result?.voteAverage ?? ""}".substring(0, 4)
+              : "${result?.voteAverage ?? ""}",
+          softWrap: true,
+          maxLines: 2,
+          style: const TextStyle(color: Colors.white),
+        ),
+        const Icon(
+          Icons.star,
+          color: Colors.yellow,
+        )
       ],
     );
   }

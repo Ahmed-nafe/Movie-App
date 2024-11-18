@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:movie/features/presentation/screens/browse_screen/data/repo/category_repo_implment.dart';
 import 'package:movie/features/presentation/screens/details_screen/data/repos/details_repo_impl.dart';
 import 'package:movie/features/presentation/screens/home_tab/data/repos/home_repo_impl.dart';
 import 'api_manger.dart';
@@ -15,6 +16,11 @@ void setup() {
   );
   getIt.registerSingleton<DetailsRepoImpl>(
     DetailsRepoImpl(
+      getIt.get<ApiManger>(),
+    ),
+  );
+  getIt.registerSingleton<CategoryRepoImpl>(
+    CategoryRepoImpl(
       getIt.get<ApiManger>(),
     ),
   );
