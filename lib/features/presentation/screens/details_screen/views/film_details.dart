@@ -14,7 +14,7 @@ class FilmDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         // left: 22.0,
         top: 12,
       ),
@@ -27,10 +27,10 @@ class FilmDetails extends StatelessWidget {
               movieDetailsModel: movieDetailsModel,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
-          MoreLikeSection()
+          const MoreLikeSection()
         ],
       ),
     );

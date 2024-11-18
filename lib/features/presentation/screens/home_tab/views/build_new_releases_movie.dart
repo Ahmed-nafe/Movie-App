@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie/core/utils/shimmer_container.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:movie/features/presentation/screens/watchlist_screen/add_movie_watch_list.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../data/model/NewReleaseModel.dart';
 
@@ -44,25 +44,7 @@ class BuildNewReleasesMovie extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                height: 32,
-                width: 24,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/Icons/bookmark.png"),
-                  ),
-                ),
-                child: const Icon(
-                  Icons.add,
-                  color: Colors.white,
-                  size: 18,
-                ),
-              ),
-            ),
-          ),
+          AddMovieToWatchList(left: 0),
         ],
       ),
     );

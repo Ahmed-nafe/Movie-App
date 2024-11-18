@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:movie/core/utils/api_manger.dart';
 
 import 'package:movie/core/utils/errors.dart';
+import 'package:movie/features/presentation/screens/details_screen/data/model/MoreLikeModel.dart';
 
 import 'package:movie/features/presentation/screens/details_screen/data/model/MoveDetilsModel.dart';
 
@@ -14,14 +15,30 @@ class DetailsRepoImpl implements DetailsRepo {
   DetailsRepoImpl(this.apiManger);
 
   @override
-  Future<Either<Failure, MovieDetailsModel>> fetchDetailsMovie(
-      {required int movieId}) async {
+  Future<Either<Failure, MovieDetailsModel>> fetchDetailsMovie({required int movieId}) async {
     try {
       var response = await apiManger.get(endPoint: "$movieId");
-
       MovieDetailsModel movieDetailsModel =
           MovieDetailsModel.fromJson(response);
       return right(movieDetailsModel);
+    } on Exception catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(
+          ServerFailure(e.toString()),
+        );
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, MoreLikeModel>> fetchMoreLikeMovie({required int movieId}) async{
+    try {
+      var response = await apiManger.get(endPoint: "$movieId/similar");
+      MoreLikeModel moreLikeModel =
+      MoreLikeModel.fromJson(response);
+      return right(moreLikeModel);
     } on Exception catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));

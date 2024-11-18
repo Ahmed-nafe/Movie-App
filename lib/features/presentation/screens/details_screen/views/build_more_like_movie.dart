@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie/core/utils/shimmer_container.dart';
-import 'package:movie/features/presentation/screens/home_tab/data/model/RecommendedModel.dart';
-import 'package:movie/features/presentation/screens/watchlist_screen/add_movie_watch_list.dart';
+import 'package:movie/features/presentation/screens/details_screen/data/model/MoreLikeModel.dart';
 import '../../../../../core/utils/app_router.dart';
+import '../../../../../core/utils/shimmer_container.dart';
+import '../../watchlist_screen/add_movie_watch_list.dart';
 
-class BuildRecommendedMovie extends StatelessWidget {
-  const BuildRecommendedMovie({
+class BuildMoreLikeMovie extends StatelessWidget {
+  const BuildMoreLikeMovie({
     super.key,
     required this.result,
   });
@@ -20,7 +20,8 @@ class BuildRecommendedMovie extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            GoRouter.of(context).push(AppRouter.detailsView, extra: result?.id);
+            GoRouter.of(context)
+                .pushReplacement(AppRouter.detailsView, extra: result?.id);
           },
           child: Card(
             elevation: 5,
@@ -54,8 +55,7 @@ class BuildRecommendedMovie extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 8.0, bottom: 8, right: 8),
+                  padding: const EdgeInsets.only(left: 8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -91,7 +91,9 @@ class BuildRecommendedMovie extends StatelessWidget {
             ),
           ),
         ),
-        AddMovieToWatchList(left: 12),
+        AddMovieToWatchList(
+          left: 12,
+        ),
       ],
     );
   }
