@@ -18,7 +18,6 @@ class MoreLikeListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoreLikeCubit, MoreLikeState>(
       builder: (context, state) {
-        print('Ahmed Nafe : $state');
         if (state is MoreLikeLoading) {
           return const Center(
             child: CircularProgressIndicator(),

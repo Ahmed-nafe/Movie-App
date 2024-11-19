@@ -12,7 +12,7 @@ class CategoryListCubit extends Cubit<CategoryListState> {
   Future<void> fetchCategoryList() async {
     emit(CategoryListLoading());
     try {
-      var categoryList = await categoryRepo.fetchCategoryList();
+      var categoryList = await categoryRepo.fetchCategoryGenresList();
       categoryList.fold(
         (failure) => emit(
           CategoryListError(errorMessage: failure.errorMessage),
@@ -27,4 +27,6 @@ class CategoryListCubit extends Cubit<CategoryListState> {
       );
     }
   }
+
+
 }

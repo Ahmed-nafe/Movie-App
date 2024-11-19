@@ -60,7 +60,8 @@ class FilmDetailsBody extends StatelessWidget {
             return Center(
               child: Text("Error :${state.errorMessage}"),
             );
-          } else {
+          }
+          else {
             return const Text("Error: Unknown state");
           }
         },

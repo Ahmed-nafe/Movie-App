@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/core/utils/server_locator.dart';
-import 'package:movie/features/presentation/screens/details_screen/data/repos/details_repo_impl.dart';
-import 'package:movie/features/presentation/screens/details_screen/manger/more_like_cubit/more_like_cubit.dart';
 import 'package:movie/features/presentation/screens/home_tab/data/repos/home_repo_impl.dart';
 import 'package:movie/features/presentation/screens/home_tab/manger/new_releses_cubit/new_releases_cubit.dart';
 import 'package:movie/features/presentation/screens/home_tab/manger/popular_cuibt/popular_cubit.dart';
