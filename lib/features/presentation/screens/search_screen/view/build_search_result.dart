@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movie/core/utils/app_router.dart';
 import 'package:movie/features/presentation/screens/search_screen/data/model/search_model.dart';
 import '../../../../../core/utils/cached_network_image.dart';
 import '../../../../../core/utils/movie_rating.dart';
@@ -15,7 +17,14 @@ class BuildSearchResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      onTap: () {
+        GoRouter.of(context).push(
+          AppRouter.detailsView,
+          extra: resultData?.id,
+        );
+      },
       child: Container(
         margin: const EdgeInsets.all(15),
         width: double.infinity,
