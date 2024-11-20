@@ -5,4 +5,5 @@ class AssetsApp {
   static const String ic_BookMarks = "assets/Icons/Icon ionic-md-bookmarks.svg";
   static const String ic_Browser = "assets/Icons/Icon material-movie.svg";
   static const String searchNotFound = "assets/Icons/Icon material-local-movies.svg";
+  static const String movieNotFound = "assets/Icons/page-not-found.png";
 }

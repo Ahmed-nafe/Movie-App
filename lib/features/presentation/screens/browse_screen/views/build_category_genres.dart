@@ -18,7 +18,13 @@ class BuildCategoryGenres extends StatelessWidget {
       highlightColor: Colors.transparent.withOpacity(0),
       splashColor: Colors.transparent,
       onTap: () {
-        GoRouter.of(context).push(AppRouter.genres, extra: genres?.id);
+        GoRouter.of(context).push(
+          AppRouter.genres,
+          extra: {
+            "genreId": genres?.id,
+            "genreName": genres?.name,
+          },
+        );
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(6),

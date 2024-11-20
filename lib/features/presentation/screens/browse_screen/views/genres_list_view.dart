@@ -5,9 +5,12 @@ import 'package:movie/features/presentation/screens/browse_screen/manger/categor
 import 'build_genres_movie.dart';
 
 class GenresListView extends StatelessWidget {
-  const GenresListView({
+   GenresListView({
     super.key,
+    required this.name,
   });
+
+  String name;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +25,8 @@ class GenresListView extends StatelessWidget {
         if (state is CategoryGenresListSuccess) {
           CategoryGenresModel categoryGenresModel = state.genres;
           return BuildGenresMovie(
-            categoryGenresModel: categoryGenresModel
-
+            name: name,
+              categoryGenresModel: categoryGenresModel
           );
         } else {
           return const Center(child: Text("OOPS!"));

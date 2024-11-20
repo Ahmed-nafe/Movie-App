@@ -3,12 +3,14 @@ import '../data/model/category_genres_model.dart';
 import 'build_genres_List.dart';
 
 class BuildGenresMovie extends StatelessWidget {
-  const BuildGenresMovie({
+  BuildGenresMovie({
     super.key,
     required this.categoryGenresModel,
+    required this.name,
   });
 
   final CategoryGenresModel categoryGenresModel;
+  String name;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,13 @@ class BuildGenresMovie extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: const Text(
-            "genres?.name ?? " "",
-            style: TextStyle(color: Colors.grey, fontSize: 18),
+          title: Text(
+            name,
+            style: const TextStyle(
+              color: Colors.grey,
+              fontSize: 25,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           foregroundColor: Colors.blue,
         ),

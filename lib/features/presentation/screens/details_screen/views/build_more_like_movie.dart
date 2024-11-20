@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie/core/utils/movie_rating.dart';
 import 'package:movie/features/presentation/screens/details_screen/data/model/MoreLikeModel.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/shimmer_container.dart';
@@ -61,9 +62,9 @@ class BuildMoreLikeMovie extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      buildVoteModel(),
+                      MovieRating(voteAverage: "${result?.voteAverage ?? 0.0}"),
                       Text(
-                        (result?.originalTitle ?? "").length > 20
+                        (result?.originalTitle ?? "").length > 10
                             ? "${result?.originalTitle?.substring(0, 10)}..."
                             : result?.originalTitle ?? "",
                         style: const TextStyle(
@@ -81,25 +82,6 @@ class BuildMoreLikeMovie extends StatelessWidget {
         AddMovieToWatchList(
           left: 12,
         ),
-      ],
-    );
-  }
-
-  Row buildVoteModel() {
-    return Row(
-      children: [
-        Text(
-          "${result?.voteAverage ?? ""}".length > 4
-              ? "${result?.voteAverage ?? ""}".substring(0, 4)
-              : "${result?.voteAverage ?? ""}",
-          softWrap: true,
-          maxLines: 2,
-          style: const TextStyle(color: Colors.white),
-        ),
-        const Icon(
-          Icons.star,
-          color: Colors.yellow,
-        )
       ],
     );
   }

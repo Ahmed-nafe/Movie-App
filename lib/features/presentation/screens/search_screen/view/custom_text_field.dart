@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key});
+import '../manger/search_cubit.dart';
+
+class CustomTab extends StatelessWidget {
+  const CustomTab({
+    super.key,
+  });
+
 
   @override
   Widget build(BuildContext context) {
@@ -9,10 +15,15 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(height * 0.02),
       child: TextField(
+        controller: context.read<SearchCubit>().searchController,
+        onChanged: (query) {
+          if (query.isNotEmpty) {
+            context.read<SearchCubit>().fetchSearchData(query: query);
+          }
+        },
         cursorColor: Colors.white,
         cursorHeight: 20,
         style: const TextStyle(
-          fontFamily: "Gotham",
           color: Colors.white,
           fontSize: 14,
           fontWeight: FontWeight.normal,
@@ -25,11 +36,11 @@ class CustomTextField extends StatelessWidget {
           labelStyle: const TextStyle(
             color: Colors.white,
           ),
-          // suffixIcon: IconButton(
-          //   onPressed: () {},
-          //   icon: const Icon(Icons.search),
-          //   color: Colors.white,
-          // ),
+          suffixIcon: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+            color: Colors.white,
+          ),
         ),
       ),
     );

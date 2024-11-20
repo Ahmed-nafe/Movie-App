@@ -66,7 +66,7 @@ class TopSectionItem extends StatelessWidget {
               autoPlay: true,
               viewportFraction: 1,
               autoPlayCurve: Curves.easeInOut,
-              autoPlayInterval: const Duration(seconds: 20),
+              autoPlayInterval: const Duration(seconds: 10),
               autoPlayAnimationDuration: const Duration(seconds: 1),
             ),
           );

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie/core/utils/cached_network_image.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/shimmer_container.dart';
 import '../data/model/category_genres_model.dart';
@@ -44,25 +45,12 @@ class BuildGenresList extends StatelessWidget {
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  child: CachedNetworkImage(
+                  child: BuildCachedNetworkImage(
                     fit: BoxFit.fill,
-                    imageUrl:
-                        "https://image.tmdb.org/t/p/original/${categoryGenresModel.results?[index].posterPath},",
-                    placeholder: (context, url) => const ShimmerContainer(
-                      width: double.infinity,
-                      height: 300,
-                    ),
-                    errorWidget: (context, url, error) => const SizedBox(
-                      height: 100,
-                      width: 150,
-                      child: Center(
-                        child: Icon(
-                          Icons.error_outline,
-                          color: Colors.white,
-                          size: 40,
-                        ),
-                      ),
-                    ),
+                    shimmerContainer: const ShimmerContainer(
+                        width: double.infinity, height: 300),
+                    posterURL:
+                        "${categoryGenresModel.results?[index].posterPath}",
                   ),
                 ),
               ),

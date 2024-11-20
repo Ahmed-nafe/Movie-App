@@ -9,18 +9,22 @@ class GenreMoviesListScreen extends StatelessWidget {
   GenreMoviesListScreen({
     super.key,
     required this.genreId,
+    required this.title,
   });
 
   int genreId;
+  String title;
 
   // @override
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CategoryGenresListCubit(
-        getIt.get<CategoryRepoImpl>()
-      )..fetchCategoryGenresList(genreID: genreId),
-      child: const GenresListView(),
+      create: (context) =>
+          CategoryGenresListCubit(getIt.get<CategoryRepoImpl>())
+            ..fetchCategoryGenresList(genreID: genreId),
+      child: GenresListView(
+        name: title,
+      ),
     );
   }
 }

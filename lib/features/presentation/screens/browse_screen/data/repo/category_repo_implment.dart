@@ -42,7 +42,6 @@ class CategoryRepoImpl implements CategoryRepo {
         endPoint: "?with_genres=$movieId",
         apiKey: "&api_key=0403d62457b0709fa04b96044b5aa966",
       );
-      print("Ahmed Nafe :$response");
       CategoryGenresModel categoryGenresModel =
           CategoryGenresModel.fromJson(response);
       return right(categoryGenresModel);

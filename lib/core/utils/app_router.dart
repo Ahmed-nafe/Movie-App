@@ -42,12 +42,16 @@ abstract class AppRouter {
       GoRoute(
         path: genres,
         builder: (BuildContext context, GoRouterState state) {
+          final extraData = state.extra as Map<String, dynamic>?;
+          final genreId = extraData?['genreId'] as int?;
+          final genreName = extraData?['genreName'] as String?;
           return BlocProvider(
               create: (context) => MovieDetailsCubit(
                     getIt<DetailsRepoImpl>(),
                   ),
               child: GenreMoviesListScreen(
-                genreId: state.extra as int,
+                title: genreName as String,
+                genreId: genreId as int,
               ));
         },
       ),

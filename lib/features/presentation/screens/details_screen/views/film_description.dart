@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie/core/utils/cached_network_image.dart';
 import 'package:movie/features/presentation/screens/details_screen/data/model/MoveDetilsModel.dart';
 import '../../../../../core/utils/shimmer_container.dart';
 import 'build_Movie_description.dart';
@@ -42,22 +43,19 @@ class FilmDescription extends StatelessWidget {
         Row(
           children: [
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.25,
-              width: MediaQuery.sizeOf(context).width * 0.35,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: CachedNetworkImage(
-                imageUrl:
-                    "https://image.tmdb.org/t/p/original/${movieDetailsModel.posterPath}",
-                placeholder: (context, url) => const ShimmerContainer(
-                  width: double.infinity,
-                  height: 150,
+                height: MediaQuery.sizeOf(context).height * 0.25,
+                width: MediaQuery.sizeOf(context).width * 0.35,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                errorWidget: (context, url, error) =>
-                    const Center(child: Icon(Icons.error)),
-              ),
-            ),
+                child: BuildCachedNetworkImage(
+                  fit: BoxFit.fill,
+                  posterURL: "${movieDetailsModel.posterPath}",
+                  shimmerContainer: const ShimmerContainer(
+                    width: double.infinity,
+                    height: 100,
+                  ),
+                )),
             BuildMovieDescription(
               movieDetailsModel: movieDetailsModel,
             )

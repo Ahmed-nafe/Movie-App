@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie/core/utils/cached_network_image.dart';
 import 'package:movie/core/utils/shimmer_container.dart';
 import 'package:movie/features/presentation/screens/watchlist_screen/add_movie_watch_list.dart';
 import '../../../../../core/utils/app_router.dart';
@@ -27,21 +28,13 @@ class BuildNewReleasesMovie extends StatelessWidget {
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: CachedNetworkImage(
-                imageUrl:
-                    "https://image.tmdb.org/t/p/original/${result?.posterPath! ?? ""},",
-                placeholder: (context, url) => const ShimmerContainer(
-                  width: 100,
-                  height: 150,
-                ),
-                errorWidget: (context, url, error) => const SizedBox(
-                  height: 100,
-                  width: 150,
-                  child: Center(
-                    child: Icon(Icons.error),
-                  ),
-                ),
-              ),
+              child: BuildCachedNetworkImage(
+                  fit: BoxFit.fill,
+                  posterURL: result?.posterPath! ?? "",
+                  shimmerContainer: const ShimmerContainer(
+                    width: 100,
+                    height: 150,
+                  )),
             ),
           ),
           AddMovieToWatchList(left: 0),
