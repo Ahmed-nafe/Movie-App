@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie/core/utils/cached_network_image.dart';
 import 'package:movie/core/utils/shimmer_container.dart';
 import 'package:movie/features/presentation/screens/home_tab/data/model/PouplarModel.dart';
 import 'package:movie/features/presentation/screens/home_tab/manger/popular_cuibt/popular_cubit.dart';
@@ -17,9 +18,7 @@ class TopSectionItem extends StatelessWidget {
     return BlocBuilder<PopularCubit, PopularState>(
       builder: (context, state) {
         if (state is PopularLoading) {
-          return const Expanded(
-            child: ShimmerContainer(width: double.infinity, height: 200),
-          );
+          return const ShimmerContainer(width: double.infinity, height: 300);
         }
         if (state is PopularSuccess) {
           PopularModel popularModel = state.popularModel;
@@ -32,21 +31,11 @@ class TopSectionItem extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.sizeOf(context).height * 0.28,
                     width: double.infinity,
-                    child: CachedNetworkImage(
+                    child: BuildCachedNetworkImage(
+                      posterURL: result?.backdropPath ?? "",
+                      shimmerContainer:
+                          ShimmerContainer(width: 150, height: 100),
                       fit: BoxFit.scaleDown,
-                      imageUrl:
-                          "https://image.tmdb.org/t/p/original/${result?.backdropPath ?? ""}",
-                      placeholder: (context, url) => const ShimmerContainer(
-                        width: 100,
-                        height: 150,
-                      ),
-                      errorWidget: (context, url, error) => const SizedBox(
-                        height: 100,
-                        width: 150,
-                        child: Center(
-                          child: Icon(Icons.error),
-                        ),
-                      ),
                     ),
                   ),
                   Container(
@@ -72,7 +61,14 @@ class TopSectionItem extends StatelessWidget {
           );
         }
         if (state is PopularError) {
-          return Text('Error fetching data ${state.errorMessage}');
+          return SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.4,
+            child: Center(
+                child: Text(
+              'Error fetching data ${state.errorMessage}',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            )),
+          );
         } else {
           return const Center(child: Text("OOPS!"));
         }

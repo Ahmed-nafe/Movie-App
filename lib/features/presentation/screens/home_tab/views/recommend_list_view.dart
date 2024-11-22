@@ -35,7 +35,12 @@ class RecommendListView extends StatelessWidget {
           );
         }
         if (state is RecommendedError) {
-          return Text("Error : ${state.errorMessage}");
+          return Expanded(
+              child: Center(
+                  child: Text(
+            "Error : ${state.errorMessage}",
+            style: const TextStyle(fontSize: 18, color: Colors.white),
+          )));
         } else {
           return const Text("OOPS!");
         }
