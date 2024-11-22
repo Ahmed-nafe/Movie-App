@@ -9,32 +9,31 @@ class RecommendSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        width: double.infinity,
-        margin: EdgeInsets.only(
-          bottom: MediaQuery.sizeOf(context).height * 0.01,
-        ),
-        decoration: const BoxDecoration(
-          color: AppColors.shadeGray,
-        ),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 19.0, top: 14, bottom: 7),
-              child: Text(
-                "Recommended",
-                style: TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+    return Container(
+      height: MediaQuery.sizeOf(context).height * 0.26,
+      width: double.infinity,
+      margin: EdgeInsets.only(
+        bottom: MediaQuery.sizeOf(context).height * 0.01,
+      ),
+      decoration: const BoxDecoration(
+        color: AppColors.shadeGray,
+      ),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 19.0, top: 14, bottom: 7),
+            child: Text(
+              "Recommended",
+              style: TextStyle(
+                fontSize: 19,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
-            RecommendListView(),
-          ],
-        ),
+          ),
+          RecommendListView(),
+        ],
       ),
     );
   }
