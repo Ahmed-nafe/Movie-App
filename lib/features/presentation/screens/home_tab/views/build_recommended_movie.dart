@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie/core/utils/cached_network_image.dart';
-import 'package:movie/core/utils/movie_rating.dart';
-import 'package:movie/core/utils/shimmer_container.dart';
 import 'package:movie/features/presentation/screens/home_tab/data/model/RecommendedModel.dart';
-import 'package:movie/features/presentation/screens/watchlist_screen/add_movie_watch_list.dart';
+
 import '../../../../../core/utils/app_router.dart';
+import '../../../../../core/utils/cached_network_image.dart';
+import '../../../../../core/utils/movie_rating.dart';
+import '../../../../../core/utils/shimmer_container.dart';
+import '../../watchlist_screen/manger/movie_watch_list_cubit.dart';
 
 class BuildRecommendedMovie extends StatelessWidget {
-  const BuildRecommendedMovie({
+  BuildRecommendedMovie({
     super.key,
     required this.result,
   });
@@ -42,12 +44,13 @@ class BuildRecommendedMovie extends StatelessWidget {
               children: [
                 Expanded(
                   child: BuildCachedNetworkImage(
-                      fit: BoxFit.cover,
-                      posterURL: result?.posterPath ?? "",
-                      shimmerContainer: const ShimmerContainer(
-                        width: 100,
-                        height: 150,
-                      )),
+                    fit: BoxFit.cover,
+                    posterURL: result?.posterPath ?? "",
+                    shimmerContainer: const ShimmerContainer(
+                      width: 100,
+                      height: 150,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding:
@@ -72,7 +75,45 @@ class BuildRecommendedMovie extends StatelessWidget {
             ),
           ),
         ),
-        AddMovieToWatchList(left: 12),
+        BlocBuilder<MovieWatchListCubit, MovieWatchListState>(
+          builder: (context, state) {
+            final cubit = context.read<MovieWatchListCubit>();
+            final isInWatchList =
+                cubit.movieList.any((movie) => movie.id == result?.id);
+
+            return Positioned(
+              left: 11,
+              child: GestureDetector(
+                onTap: () {
+                  if (isInWatchList) {
+                    cubit.removeTodoItemsToList(result!.id!);
+                  } else {
+                    cubit.addTodoItemsToList(result!);
+                  }
+                },
+                child: SizedBox(
+                  height: 32,
+                  width: 24,
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        "assets/Icons/bookmark.png",
+                        color: isInWatchList ? Colors.yellow : Colors.grey,
+                      ),
+                      Center(
+                        child: Icon(
+                          isInWatchList ? Icons.done : Icons.add,
+                          color: Colors.white,
+                          size: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
       ],
     );
   }

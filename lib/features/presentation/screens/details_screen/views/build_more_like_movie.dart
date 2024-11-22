@@ -5,7 +5,7 @@ import 'package:movie/core/utils/movie_rating.dart';
 import 'package:movie/features/presentation/screens/details_screen/data/model/MoreLikeModel.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/shimmer_container.dart';
-import '../../watchlist_screen/add_movie_watch_list.dart';
+import '../../../../../core/utils/add_movie_watch_list.dart';
 
 class BuildMoreLikeMovie extends StatelessWidget {
   const BuildMoreLikeMovie({
@@ -79,9 +79,9 @@ class BuildMoreLikeMovie extends StatelessWidget {
             ),
           ),
         ),
-        AddMovieToWatchList(
-          left: 12,
-        ),
+        // AddMovieToWatchList(
+        //   left: 12,
+        // ),
       ],
     );
   }
