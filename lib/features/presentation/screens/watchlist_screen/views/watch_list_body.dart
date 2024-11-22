@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movie/features/presentation/screens/watchlist_screen/views/watch_list_widget.dart';
 
-class WatchListBody extends StatelessWidget {
-  const WatchListBody({super.key});
+class WatchListBody extends StatefulWidget {
+  WatchListBody({super.key});
 
+  int index = 0;
+
+  @override
+  State<WatchListBody> createState() => _WatchListBodyState();
+}
+
+class _WatchListBodyState extends State<WatchListBody> {
   @override
   Widget build(BuildContext context) {
     return const SafeArea(
@@ -23,10 +30,11 @@ class WatchListBody extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            WatchListWidget(),
+            MovieListView(),
           ],
         ),
       ),
     );
   }
 }
+
