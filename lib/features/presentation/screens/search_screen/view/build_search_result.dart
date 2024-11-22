@@ -25,50 +25,58 @@ class BuildSearchResult extends StatelessWidget {
           extra: resultData?.id,
         );
       },
-      child: Container(
-        margin: const EdgeInsets.all(15),
-        width: double.infinity,
-        child: Row(
-          children: [
-            Expanded(
-              child: BuildCachedNetworkImage(
-                  fit: BoxFit.fill,
-                  shimmerContainer:
-                      const ShimmerContainer(width: 100, height: 120),
-                  posterURL: resultData?.backdropPath ?? ""),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      resultData?.originalTitle ?? "",
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                      maxLines: 1,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      (resultData?.releaseDate ?? "").length > 4
-                          ? (resultData?.releaseDate ?? "").substring(0, 4)
-                          : resultData?.releaseDate ?? "",
-                      style: const TextStyle(fontSize: 18, color: Colors.grey),
-                    ),
-                    MovieRating(
-                      voteAverage: "${resultData?.voteAverage}",
-                    )
-                  ],
+      child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.all(15),
+            width: double.infinity,
+            child: Row(
+              children: [
+                Expanded(
+                  child: BuildCachedNetworkImage(
+                      fit: BoxFit.fill,
+                      shimmerContainer:
+                          const ShimmerContainer(width: 100, height: 120),
+                      posterURL: resultData?.backdropPath ?? ""),
                 ),
-              ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          resultData?.originalTitle ?? "",
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                          maxLines: 1,
+                          softWrap: true,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          (resultData?.releaseDate ?? "").length > 4
+                              ? (resultData?.releaseDate ?? "").substring(0, 4)
+                              : resultData?.releaseDate ?? "",
+                          style:
+                              const TextStyle(fontSize: 18, color: Colors.grey),
+                        ),
+                        MovieRating(
+                          voteAverage: "${resultData?.voteAverage}",
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          const Divider(
+            height: 1,
+          ),
+        ],
       ),
     );
   }
