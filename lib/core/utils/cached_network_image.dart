@@ -19,7 +19,7 @@ class BuildCachedNetworkImage extends StatelessWidget {
     return CachedNetworkImage(
       fit: fit,
       imageUrl: "https://image.tmdb.org/t/p/original/${posterURL},",
-      placeholder: (context, url) => shimmerContainer,
+      placeholder: (context, url) =>shimmerContainer,
       errorWidget: (context, url, error) => const SizedBox(
         height: 100,
         width: 150,

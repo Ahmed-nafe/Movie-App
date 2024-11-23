@@ -5,7 +5,6 @@ import 'package:movie/core/utils/movie_rating.dart';
 import 'package:movie/features/presentation/screens/details_screen/data/model/MoreLikeModel.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/shimmer_container.dart';
-import '../../../../../core/utils/add_movie_watch_list.dart';
 
 class BuildMoreLikeMovie extends StatelessWidget {
   const BuildMoreLikeMovie({
@@ -42,12 +41,11 @@ class BuildMoreLikeMovie extends StatelessWidget {
               children: [
                 Expanded(
                   child: CachedNetworkImage(
-                    width: MediaQuery.sizeOf(context).width * 0.26,
                     imageUrl:
                         "https://image.tmdb.org/t/p/original/${result?.posterPath ?? ""}",
                     fit: BoxFit.cover,
-                    placeholder: (context, url) =>
-                        const ShimmerContainer(width: 100, height: 150),
+                    placeholder: (context, url) => const Center(
+                        child: ShimmerContainer(width: 150, height: 100)),
                     errorWidget: (context, url, error) => const SizedBox(
                       height: 100,
                       width: 150,
@@ -79,9 +77,6 @@ class BuildMoreLikeMovie extends StatelessWidget {
             ),
           ),
         ),
-        // AddMovieToWatchList(
-        //   left: 12,
-        // ),
       ],
     );
   }

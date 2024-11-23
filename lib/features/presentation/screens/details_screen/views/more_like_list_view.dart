@@ -4,9 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie/features/presentation/screens/details_screen/data/model/MoreLikeModel.dart';
 import 'package:movie/features/presentation/screens/details_screen/manger/more_like_cubit/more_like_cubit.dart';
-
-import '../../../../../core/utils/app_router.dart';
-import '../../../../../core/utils/shimmer_container.dart';
 import 'build_more_like_movie.dart';
 
 class MoreLikeListView extends StatelessWidget {

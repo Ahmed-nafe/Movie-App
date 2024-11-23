@@ -30,7 +30,7 @@ class MoreLikeSection extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.21,
+            height: MediaQuery.sizeOf(context).height * 0.3,
             child: const MoreLikeListView(),
           )
         ],

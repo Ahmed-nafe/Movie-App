@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie/features/presentation/screens/home_tab/data/model/RecommendedModel.dart';
-
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/cached_network_image.dart';
 import '../../../../../core/utils/movie_rating.dart';
@@ -28,11 +27,7 @@ class BuildRecommendedMovie extends StatelessWidget {
               extra: result?.id,
             );
           },
-          child: Card(
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
+          child: Container(
             color: const Color(0xff343534),
             margin: const EdgeInsets.only(
               right: 2.2,
@@ -44,11 +39,11 @@ class BuildRecommendedMovie extends StatelessWidget {
               children: [
                 Expanded(
                   child: BuildCachedNetworkImage(
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                     posterURL: result?.posterPath ?? "",
                     shimmerContainer: const ShimmerContainer(
-                      width: 100,
-                      height: 150,
+                      width: 150,
+                      height: 120,
                     ),
                   ),
                 ),

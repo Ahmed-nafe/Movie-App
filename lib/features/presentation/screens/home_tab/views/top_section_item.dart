@@ -34,7 +34,7 @@ class TopSectionItem extends StatelessWidget {
                     child: BuildCachedNetworkImage(
                       posterURL: result?.backdropPath ?? "",
                       shimmerContainer:
-                          ShimmerContainer(width: 150, height: 100),
+                          const ShimmerContainer(width: 150, height: 100),
                       fit: BoxFit.scaleDown,
                     ),
                   ),
@@ -52,7 +52,7 @@ class TopSectionItem extends StatelessWidget {
             },
             options: CarouselOptions(
               height: MediaQuery.sizeOf(context).height * .36,
-              autoPlay: true,
+              autoPlay: false,
               viewportFraction: 1,
               autoPlayCurve: Curves.easeInOut,
               autoPlayInterval: const Duration(seconds: 10),
@@ -66,7 +66,7 @@ class TopSectionItem extends StatelessWidget {
             child: Center(
                 child: Text(
               'Error fetching data ${state.errorMessage}',
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: const TextStyle(color: Colors.white, fontSize: 18),
             )),
           );
         } else {

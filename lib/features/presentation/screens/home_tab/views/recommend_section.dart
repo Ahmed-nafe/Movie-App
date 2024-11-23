@@ -10,7 +10,7 @@ class RecommendSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.sizeOf(context).height * 0.26,
+      height: MediaQuery.sizeOf(context).height * 0.38,
       width: double.infinity,
       margin: EdgeInsets.only(
         bottom: MediaQuery.sizeOf(context).height * 0.01,

@@ -15,7 +15,7 @@ class NewReleasesListView extends StatelessWidget {
     return BlocBuilder<NewReleasesCubit, NewReleasesState>(
       builder: (context, state) {
         if (state is NewReleasesLoading) {
-          return  BuildShimmer(width: 100,height: 60,);
+          return  BuildShimmer(width: 150,height: 90,);
         }
         if (state is NewReleasesSuccess) {
           NewReleaseModel newReleaseModel = state.newReleaseModel;

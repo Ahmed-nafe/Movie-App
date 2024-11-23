@@ -26,29 +26,27 @@ class _HomeTabBodyState extends State<HomeTabBody> {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      color: Colors.white,
-      backgroundColor: Colors.blue,
-      onRefresh: _refreshPage,
-      child: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              children: const [
-                TopSectionItem(),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 20,
-                    bottom: 16,
-                  ),
-                  child: NewReleasesSection(),
+    return SafeArea(
+      child: RefreshIndicator(
+        color: Colors.white,
+        backgroundColor: Colors.blue,
+        onRefresh: _refreshPage,
+        child: const SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              TopSectionItem(),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 20,
+                  bottom: 16,
                 ),
-                RecommendSection(),
-              ],
-            ),
+                child: NewReleasesSection(),
+              ),
+              RecommendSection(),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

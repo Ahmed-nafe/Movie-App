@@ -31,28 +31,30 @@ class FilmDetailsBody extends StatelessWidget {
                       fontSize: 20, fontWeight: FontWeight.w600),
                 ),
               ),
-              body: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: MediaQuery.sizeOf(context).height * 0.25,
-                    width: double.infinity,
-                    child: CachedNetworkImage(
-                      fit: BoxFit.fill,
-                      imageUrl:
-                          "https://image.tmdb.org/t/p/original/${movieDetailsModel.backdropPath}",
-                      placeholder: (context, url) => const ShimmerContainer(
-                        width: double.infinity,
-                        height: 150,
+              body: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.sizeOf(context).height * 0.25,
+                      width: double.infinity,
+                      child: CachedNetworkImage(
+                        fit: BoxFit.fill,
+                        imageUrl:
+                            "https://image.tmdb.org/t/p/original/${movieDetailsModel.backdropPath}",
+                        placeholder: (context, url) => const ShimmerContainer(
+                          width: double.infinity,
+                          height: 150,
+                        ),
+                        errorWidget: (context, url, error) =>
+                            const Center(child: Icon(Icons.error)),
                       ),
-                      errorWidget: (context, url, error) =>
-                          const Center(child: Icon(Icons.error)),
                     ),
-                  ),
-                  FilmDetails(
-                    movieDetailsModel: movieDetailsModel,
-                  ),
-                ],
+                    FilmDetails(
+                      movieDetailsModel: movieDetailsModel,
+                    ),
+                  ],
+                ),
               ),
             );
           }

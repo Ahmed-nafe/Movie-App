@@ -24,8 +24,6 @@ class BuildMovieDescription extends StatelessWidget {
               children: [
                 buildGenres(index: 0),
                 buildGenres(index: 1),
-                buildGenres(index: 2),
-                buildGenres(index: 3),
               ],
             ),
             const SizedBox(
@@ -56,11 +54,12 @@ class BuildMovieDescription extends StatelessWidget {
 
   Container buildGenres({int index = 0}) {
     final safeIndex = (movieDetailsModel.genres != null &&
-        index >= 0 &&
-        index < (movieDetailsModel.genres?.length ?? 0))
+            index >= 0 &&
+            index < (movieDetailsModel.genres?.length ?? 0))
         ? index
         : 0;
     return Container(
+
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         border: Border.all(
@@ -70,7 +69,7 @@ class BuildMovieDescription extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       child: Text(
-        "${movieDetailsModel.genres?[safeIndex].name ?? 0}",
+        "${movieDetailsModel.genres?[safeIndex].name}",
         style: const TextStyle(
           color: Colors.white,
         ),

@@ -44,8 +44,8 @@ class FilmItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  results?.originalTitle ?? "",
-                  maxLines: 2,
+                  results?.title ?? "",
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   softWrap: true,
                   style: const TextStyle(
@@ -55,12 +55,14 @@ class FilmItem extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 6),
-                Text(
-                  results?.releaseDate ?? "",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white.withOpacity(0.7),
+                Expanded(
+                  child: Text(
+                    results?.releaseDate ?? "",
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white.withOpacity(0.7),
+                    ),
                   ),
                 ),
               ],

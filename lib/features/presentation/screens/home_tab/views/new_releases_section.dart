@@ -10,7 +10,7 @@ class NewReleasesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.sizeOf(context).height * 0.22,
+      height: MediaQuery.sizeOf(context).height * 0.25,
       decoration: const BoxDecoration(
         color: AppColors.shadeGray,
       ),

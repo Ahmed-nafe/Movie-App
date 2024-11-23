@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
-import 'package:meta/meta.dart';
 import 'package:movie/features/presentation/screens/home_tab/data/model/RecommendedModel.dart';
 
 part 'movie_watch_list_state.dart';

@@ -15,7 +15,6 @@ class FilmDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        // left: 22.0,
         top: 12,
       ),
       child: Column(
